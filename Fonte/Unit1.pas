@@ -26,7 +26,6 @@ uses
   Vcl.IdAntiFreeze, Vcl.ImgList, Vcl.Buttons, DateUtils, ACBrCTe, ACBrMDFe, pcnRetConsReciNFe,
   pcnConversaoNFe, pcnNFe, OleCtrls, SHDocVw, System.ImageList;
 
-
 type
   TForm1 = class(TForm)
     ACBrNFe1: TACBrNFe;
@@ -101,9 +100,6 @@ type
     procedure SelecionaCertificadoClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
 
-
-
-
   private
     { Private declarations }
 
@@ -121,8 +117,6 @@ implementation
 uses  Unit2, strutils, math, TypInfo,  synacode,
    ACBrDFeConfiguracoes, pcnAuxiliar, ACBrDFeSSL,
   ACBrNFeNotasFiscais;
-
-
 
 Function VersaoExe: String;
 type
@@ -259,8 +253,6 @@ if (StrToDate(dataatual_.Caption) > StrToDate(DataCertificado.Caption)) then
                 ImageList1.GetBitmap(3, StatusNFCe.Glyph);
                 StatusNFCee.Font.Color := clBlue ;
                 StatusNFCee.Caption := 'NFCe: Contigência Ativo';
-                //btnStatusMDFe.Click;
-
         end
 else
         begin
@@ -287,7 +279,7 @@ else
                 ImageList1.GetBitmap(0, StatusNFCe.Glyph);
                 StatusNFCee.Font.Color := clred ;
                 StatusNFCee.Caption := 'NFCe: '+ Status_NFCe.Caption;
-               // btnStatusMDFe.Click;
+
 
                 end
                 else
@@ -296,8 +288,6 @@ else
                 ImageList1.GetBitmap(1, StatusNFCe.Glyph);
                 StatusNFCee.Font.Color := clgreen ;
                 StatusNFCee.Caption := 'NFCe: '+Status_NFCe.Caption;
-               //btnStatusMDFe.Click;
-
                 end;
                 btnStatusMDFe.Click;
         end;
@@ -353,7 +343,6 @@ begin
                                             Application.ProcessMessages;
                                             Status_NFe.Refresh;
                                             Status_NFe.Caption := ACBrNFe1.WebServices.StatusServico.xMotivo;
-                                            //btnStatusCTe.Click;
                                             Application.ProcessMessages;
                                             //atualizando status no painel de status
                                             statusnfee.Refresh;
@@ -368,9 +357,6 @@ begin
                                             ImageList1.GetBitmap(0, statusnfe.Glyph);
                                             statusnfee.Font.Color := clred ;
                                             statusnfee.Caption := 'NFe: '+ Status_NFe.Caption;
-                                           // btnStatusCTe.Click;
-
-
                                             end
                                             else
                                             begin
@@ -378,8 +364,6 @@ begin
                                             ImageList1.GetBitmap(1, statusnfe.Glyph);
                                             statusnfee.Font.Color := clgreen ;
                                             statusnfee.Caption := 'NFe: '+Status_NFe.Caption;
-                                          //  btnStatusCTe.Click;
-
                                             end;
                                             btnStatusCTe.Click;
                                     end;
@@ -464,77 +448,7 @@ begin
 
   registro.Free;
   statusIE.Visible := true;
-  statusIE.Caption := 'Configurações do Certificado no '+#13#10+'Internet Explorer realizado com sucesso.';
-
-
-  //tabelas de codigos do registro SLL
-
-  {
-0 => Keine sicheren Protokolle verwenden
-
-8 => Nur SSL 2.0 verwenden
-
-32 => Nur SSL 3.0 verwenden
-
-40 => SSL 2.0 und SSL 3.0 verwenden
-
-128 => Nur TLS 1.0 verwenden
-
-136 => SSL 2.0 und TLS 1.0 verwenden
-
-160 => SSL 3.0 und TLS 1.0 verwenden
-
-168 => SSL 2.0, SSL 3.0, und TLS 1.0 verwenden
-
-512 => Nur TLS 1.1 verwenden
-
-520 => SSL 2.0 und TLS 1.1 verwenden
-
-544 => SSL 3.0 und TLS 1.1 verwenden
-
-552 => SSL 2.0, SSL 3.0 und TLS 1.1 verwenden
-
-640 => TLS 1.0 und TLS 1.1 verwenden
-
-648 => SSL 2.0, TLS 1.0 und TLS 1.1 verwenden
-
-672 => SSL 3.0, TLS 1.0 und TLS 1.1 verwenden
-
-680 => SSL 2.0, SSL 3.0, TLS 1.0 und TLS 1.1 verwenden
-
-2048 => Nur TLS 1.2 verwenden
-
-2056 => SSL 2.0 und TLS 1.2 verwenden
-
-2080 => SSL 3.0 und TLS 1.2 verwenden
-
-2088 => SSL 2.0, SSL 3.0 und TLS 1.2 verwenden
-
-2176 => TLS 1.0 und TLS 1.2 verwenden
-
-2184 => SSL 2.0, TLS 1.0 und TLS 1.2 verwenden
-
-2208 => SSL 3.0, TLS 1.0 und TLS 1.2 verwenden
-
-2216 => SSL 2.0, SSL 3.0, TLS 1.0 und TLS 1.2 verwenden
-
-2560 => TLS 1.1 und TLS 1.2 verwenden
-
-2568 => SSL 2.0, TLS 1.1 und TLS 1.2 verwenden
-
-2592 => SSL 3.0, TLS 1.1 und TLS 1.2 verwenden
-
-2600 => SSL 2.0, SSL 3.0, TLS 1.1 und TLS 1.2 verwenden
-
-2688 => TLS 1.0, TLS 1.1 und TLS 1.2 verwenden
-
-2696 => SSL 2.0, TLS 1.0, TLS 1.1 und TLS 1.2 verwenden
-
-2720 => SSL 3.0, TLS 1.0, TLS 1.1 und TLS 1.2 verwenden
-
-2728 => SSL 2.0, SSL 3.0, TLS 1.0, TLS 1.1 und TLS 1.2 verwenden
-}
-
+  statusIE.Caption := 'Config. Certificados IExplorer '+#13#10+'realizado com sucesso.';
 
 end;
 
@@ -701,7 +615,7 @@ else
                 end;
         end;
   end;
-  showmessage('Processo Realizado. Verifique Resultados Obtidos!');
+  showmessage('Verificação dos Webservices Concluído!');
 end;
 
 procedure TForm1.btnStatusNETClick(Sender: TObject);
@@ -739,23 +653,7 @@ begin
         statusnett.Caption := 'Internet: Offline';
         btnVCerticado.Click;
 end;
-               {
-if InternetGetConnectedState(@i,0) then
-        begin
-        statusnet.Glyph.Assign(nil);
-        ImageList1.GetBitmap(1, statusnet.Glyph);
-        statusnett.Font.Color := clGreen ;
-        statusnett.Caption := 'Internet: Online';
-        btnVCerticado.Click;
-        end
-        else
-        begin
-        statusnet.Glyph.Assign(nil);
-        ImageList1.GetBitmap(0, statusnet.Glyph);
-        statusnett.Font.Color := clRed ;
-        statusnett.Caption := 'Internet: Offline';
-        btnVCerticado.Click;
-        end;    }
+
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
