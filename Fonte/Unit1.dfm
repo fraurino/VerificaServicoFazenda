@@ -4,8 +4,8 @@ object Form1: TForm1
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Form1'
-  ClientHeight = 264
-  ClientWidth = 657
+  ClientHeight = 277
+  ClientWidth = 1093
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,8 +20,8 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 776
-    Top = 124
+    Left = 832
+    Top = 230
     Width = 167
     Height = 13
     Caption = 'Status da NF-e .......................'
@@ -31,26 +31,27 @@ object Form1: TForm1
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
+    Visible = False
   end
   object DataAtual_: TLabel
-    Left = 969
-    Top = 28
+    Left = 962
+    Top = 168
     Width = 54
     Height = 13
     Caption = 'DataAtual_'
     Visible = False
   end
   object DataCertificado: TLabel
-    Left = 909
-    Top = 28
+    Left = 962
+    Top = 149
     Width = 54
     Height = 13
     Caption = 'DataAtual_'
     Visible = False
   end
   object sbtnGetCert: TSpeedButton
-    Left = 994
-    Top = 331
+    Left = 1090
+    Top = 145
     Width = 23
     Height = 24
     Glyph.Data = {
@@ -70,8 +71,8 @@ object Form1: TForm1
     Visible = False
   end
   object Status_NFe: TLabel
-    Left = 776
-    Top = 43
+    Left = 832
+    Top = 149
     Width = 56
     Height = 13
     Caption = 'Status_NFe'
@@ -79,8 +80,8 @@ object Form1: TForm1
     Visible = False
   end
   object Status_CTe: TLabel
-    Left = 776
-    Top = 62
+    Left = 832
+    Top = 168
     Width = 56
     Height = 13
     Caption = 'Status_CTe'
@@ -88,8 +89,8 @@ object Form1: TForm1
     Visible = False
   end
   object Status_NFCe: TLabel
-    Left = 776
-    Top = 81
+    Left = 832
+    Top = 187
     Width = 63
     Height = 13
     Caption = 'Status_NFCe'
@@ -97,8 +98,8 @@ object Form1: TForm1
     Visible = False
   end
   object Status_MDFe: TLabel
-    Left = 776
-    Top = 105
+    Left = 832
+    Top = 211
     Width = 64
     Height = 13
     Caption = 'Status_MDFe'
@@ -107,17 +108,19 @@ object Form1: TForm1
   end
   object Panel1: TPanel
     Left = 0
-    Top = 246
-    Width = 657
+    Top = 259
+    Width = 1093
     Height = 18
     Align = alBottom
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitTop = 246
+    ExplicitWidth = 657
     object Label3: TLabel
       Left = 1
       Top = 1
-      Width = 655
+      Width = 1091
       Height = 16
       Align = alClient
       Alignment = taRightJustify
@@ -139,10 +142,11 @@ object Form1: TForm1
     Left = 0
     Top = 69
     Width = 377
-    Height = 177
+    Height = 190
     Align = alLeft
     Caption = 'Status dos Servi'#231'os'
     TabOrder = 1
+    ExplicitHeight = 177
     object statusnett: TLabel
       Left = 30
       Top = 30
@@ -271,8 +275,8 @@ object Form1: TForm1
     end
   end
   object btnStatusNFe: TButton
-    Left = 592
-    Top = 134
+    Left = 647
+    Top = 208
     Width = 75
     Height = 25
     Caption = 'btnStatusNFe'
@@ -281,8 +285,8 @@ object Form1: TForm1
     OnClick = btnStatusNFeClick
   end
   object btnStatusNET: TButton
-    Left = 592
-    Top = 75
+    Left = 647
+    Top = 149
     Width = 75
     Height = 25
     Caption = 'btnStatusNET'
@@ -291,8 +295,8 @@ object Form1: TForm1
     OnClick = btnStatusNETClick
   end
   object btnVCerticado: TButton
-    Left = 592
-    Top = 106
+    Left = 647
+    Top = 180
     Width = 75
     Height = 25
     Caption = 'btnVCerticado'
@@ -301,8 +305,8 @@ object Form1: TForm1
     OnClick = btnVCerticadoClick
   end
   object btnStatusCTe: TButton
-    Left = 673
-    Top = 75
+    Left = 728
+    Top = 149
     Width = 86
     Height = 25
     Caption = 'btnStatusCTe'
@@ -311,8 +315,8 @@ object Form1: TForm1
     OnClick = btnStatusCTeClick
   end
   object btnStatusNFCe: TButton
-    Left = 673
-    Top = 106
+    Left = 728
+    Top = 180
     Width = 86
     Height = 25
     Caption = 'btnStatusNFCe'
@@ -321,16 +325,16 @@ object Form1: TForm1
     OnClick = btnStatusNFCeClick
   end
   object edtNumSerie: TEdit
-    Left = 864
-    Top = 331
-    Width = 124
+    Left = 1040
+    Top = 146
+    Width = 44
     Height = 21
     TabOrder = 7
     Visible = False
   end
   object btnStatusMDFe: TButton
-    Left = 673
-    Top = 137
+    Left = 728
+    Top = 211
     Width = 86
     Height = 25
     Caption = 'btnStatusMDFe'
@@ -341,10 +345,11 @@ object Form1: TForm1
   object GroupBox3: TGroupBox
     Left = 0
     Top = 17
-    Width = 657
+    Width = 1093
     Height = 52
     Align = alTop
     TabOrder = 9
+    ExplicitWidth = 657
     object SstatusNFe: TAdvGlowButton
       Left = 129
       Top = 14
@@ -411,18 +416,18 @@ object Form1: TForm1
   object GroupBox1: TGroupBox
     Left = 377
     Top = 69
-    Width = 280
-    Height = 177
-    Align = alClient
+    Width = 264
+    Height = 188
     Caption = 'Config. UF | SSL/TLS Internet Explorer'
     TabOrder = 10
     object GroupBox2: TGroupBox
       Left = 2
       Top = 15
-      Width = 276
-      Height = 67
+      Width = 260
+      Height = 78
       Align = alClient
       TabOrder = 0
+      ExplicitHeight = 120
       object Label6: TLabel
         Left = 4
         Top = 14
@@ -497,16 +502,18 @@ object Form1: TForm1
     end
     object GroupBox4: TGroupBox
       Left = 2
-      Top = 82
-      Width = 276
+      Top = 93
+      Width = 260
       Height = 93
       Align = alBottom
       Caption = 'SSL Internet Explorer | NF 4.0'
       TabOrder = 1
+      ExplicitTop = 82
+      ExplicitWidth = 276
       object statusIE: TLabel
         Left = 2
         Top = 78
-        Width = 272
+        Width = 256
         Height = 13
         Align = alBottom
         Alignment = taCenter
@@ -586,14 +593,15 @@ object Form1: TForm1
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 657
+    Width = 1093
     Height = 17
     Align = alTop
     TabOrder = 11
+    ExplicitWidth = 657
     object empresa: TLabel
       Left = 1
       Top = 1
-      Width = 655
+      Width = 1091
       Height = 15
       Align = alClient
       Alignment = taCenter
@@ -616,56 +624,8 @@ object Form1: TForm1
     Configuracoes.WebServices.Ambiente = taProducao
     Configuracoes.WebServices.AguardarConsultaRet = 0
     Configuracoes.WebServices.QuebradeLinha = '|'
-    Left = 880
-    Top = 40
-  end
-  object ACBrNFeDANFEFR1: TACBrNFeDANFEFR
-    MostrarPreview = True
-    MostrarStatus = True
-    TipoDANFE = tiSemGeracao
-    NumCopias = 1
-    ImprimeNomeFantasia = False
-    ImprimirDescPorc = False
-    ImprimirTotalLiquido = True
-    MargemInferior = 0.800000000000000000
-    MargemSuperior = 0.800000000000000000
-    MargemEsquerda = 0.600000000000000000
-    MargemDireita = 0.510000000000000000
-    CasasDecimais.Formato = tdetInteger
-    CasasDecimais._qCom = 2
-    CasasDecimais._vUnCom = 2
-    CasasDecimais._Mask_qCom = ',0.00'
-    CasasDecimais._Mask_vUnCom = ',0.00'
-    ExibirResumoCanhoto = False
-    FormularioContinuo = False
-    TamanhoFonte_DemaisCampos = 10
-    ProdutosPorPagina = 0
-    ImprimirDetalhamentoEspecifico = True
-    NFeCancelada = False
-    ImprimirItens = True
-    ViaConsumidor = True
-    TamanhoLogoHeight = 0
-    TamanhoLogoWidth = 0
-    RecuoEndereco = 0
-    RecuoEmpresa = 0
-    LogoemCima = False
-    TamanhoFonteEndereco = 0
-    RecuoLogo = 0
-    TributosSeparadamente = False
-    EspessuraBorda = 1
-    ExibirTotalTributosItem = False
-    ExibeCampoFatura = True
-    TributosPercentual = ptValorProdutos
-    ImprimirUnQtVlComercial = iuComercial
-    Detalhado = False
-    DescricaoViaEstabelec = 'Via do Consumidor'
-    ExpandirDadosAdicionaisAuto = False
-    ImprimirDadosArma = True
-    QuebraLinhaEmDetalhamentoEspecifico = True
-    IncorporarBackgroundPdf = True
-    IncorporarFontesPdf = True
-    Left = 976
-    Top = 128
+    Left = 656
+    Top = 72
   end
   object ACBrNFeDANFeESCPOS1: TACBrNFeDANFeESCPOS
     MostrarPreview = True
@@ -700,14 +660,14 @@ object Form1: TForm1
     TamanhoFonteEndereco = 0
     RecuoLogo = 0
     TributosSeparadamente = False
-    Left = 976
-    Top = 176
+    Left = 912
+    Top = 72
   end
   object ImageList1: TImageList
-    Left = 976
-    Top = 41
+    Left = 1016
+    Top = 73
     Bitmap = {
-      494C010106000C00580010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010106000C005C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -986,8 +946,8 @@ object Form1: TForm1
     Configuracoes.WebServices.Ambiente = taProducao
     Configuracoes.WebServices.AguardarConsultaRet = 0
     Configuracoes.WebServices.QuebradeLinha = '|'
-    Left = 880
-    Top = 136
+    Left = 768
+    Top = 72
   end
   object ACBrNFCe1: TACBrNFe
     Configuracoes.Geral.SSLLib = libCapicomDelphiSoap
@@ -997,8 +957,8 @@ object Form1: TForm1
     Configuracoes.WebServices.Ambiente = taProducao
     Configuracoes.WebServices.AguardarConsultaRet = 0
     Configuracoes.WebServices.QuebradeLinha = '|'
-    Left = 880
-    Top = 88
+    Left = 712
+    Top = 72
   end
   object ACBrMDFe1: TACBrMDFe
     Configuracoes.Geral.SSLLib = libCapicomDelphiSoap
@@ -1009,8 +969,8 @@ object Form1: TForm1
     Configuracoes.WebServices.Ambiente = taProducao
     Configuracoes.WebServices.AguardarConsultaRet = 0
     Configuracoes.WebServices.QuebradeLinha = '|'
-    Left = 882
-    Top = 185
+    Left = 826
+    Top = 73
   end
   object Timer1: TTimer
     Interval = 2000

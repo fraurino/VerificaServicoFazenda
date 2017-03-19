@@ -26,10 +26,10 @@ uses
   Vcl.IdAntiFreeze, Vcl.ImgList, Vcl.Buttons, DateUtils, ACBrCTe, ACBrMDFe, pcnRetConsReciNFe,
   pcnConversaoNFe, pcnNFe, OleCtrls, SHDocVw, System.ImageList;
 
+
 type
   TForm1 = class(TForm)
     ACBrNFe1: TACBrNFe;
-    ACBrNFeDANFEFR1: TACBrNFeDANFEFR;
     ACBrNFeDANFeESCPOS1: TACBrNFeDANFeESCPOS;
     Panel1: TPanel;
     Label1: TLabel;
@@ -100,6 +100,9 @@ type
     procedure SelecionaCertificadoClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
 
+
+
+
   private
     { Private declarations }
 
@@ -117,6 +120,8 @@ implementation
 uses  Unit2, strutils, math, TypInfo,  synacode,
    ACBrDFeConfiguracoes, pcnAuxiliar, ACBrDFeSSL,
   ACBrNFeNotasFiscais;
+
+
 
 Function VersaoExe: String;
 type
@@ -165,6 +170,40 @@ end;
 procedure TForm1.SstatusNFeClick(Sender: TObject);
 
 begin
+
+//limpando resultados
+
+statusnet.Glyph.Assign(nil);
+StatusNFe.Glyph.Assign(nil);
+StatusNFCe.Glyph.Assign(nil);
+StatusCTe.Glyph.Assign(nil);
+StatusMDFe.Glyph.Assign(nil);
+StatusCertificado.Glyph.Assign(nil);
+
+Statusnett.Caption    := 'Status da Internet';
+StatusNFee.Caption    := 'Status da NFe';
+StatusNFCee.Caption   := 'Status da NFCe';
+StatusCTee.Caption    := 'Status do CTe';
+StatusMDFee.Caption   := 'Status da MDFe';
+StatusCertificadoo.Caption   := 'Status do Certificado';
+
+ImageList1.GetBitmap(2, statusnet.Glyph);
+statusnett.Refresh;
+
+ImageList1.GetBitmap(2, statusnfe.Glyph);
+statusnett.Refresh;
+ImageList1.GetBitmap(2, statusnfce.Glyph);
+statusnett.Refresh;
+ImageList1.GetBitmap(2, statusmdfe.Glyph);
+statusnett.Refresh;
+ImageList1.GetBitmap(2, statuscte.Glyph);
+statusnett.Refresh;
+ImageList1.GetBitmap(2, statuscertificado.Glyph);
+statusnett.Refresh;
+
+
+
+
 //edtNumSerie.Text := ACBrNFe1.SSL.SelecionarCertificado;
 if edtNumSerie.Text = '' then
 begin
@@ -236,62 +275,80 @@ StatusNFCee.Caption := 'Verificando Serviço da NFCe...';
 StatusCtee.Refresh;
 Application.ProcessMessages;
 
-  if statusnett.Caption = 'Internet: Offline' then
-  begin
-                StatusNFCe.Glyph.Assign(nil);
-                ImageList1.GetBitmap(3, StatusNFCe.Glyph);
-                StatusNFCee.Font.Color := clBlue ;
-                StatusNFCee.Caption := 'NFCe: Contigência Ativo';
-                btnStatusMDFe.Click;
-  end
-  else
-  begin
-
-if (StrToDate(dataatual_.Caption) > StrToDate(DataCertificado.Caption)) then
+    if (cbUF.Text = 'MG') or (cbUF.Text = 'CE') or (cbUF.Text = 'TO')then // UF não atendidas pela NFC-e
         begin
-                StatusNFCe.Glyph.Assign(nil);
-                ImageList1.GetBitmap(3, StatusNFCe.Glyph);
-                StatusNFCee.Font.Color := clBlue ;
-                StatusNFCee.Caption := 'NFCe: Contigência Ativo';
+          StatusNFCe.Glyph.Assign(nil);
+          ImageList1.GetBitmap(0, StatusNFCe.Glyph);
+          StatusNFCee.Font.Color := clBlue ;
+          StatusNFCee.Caption := 'NFCe: Estado '+cbUF.Text+ ' não atendida.';
+          btnStatusMDFe.Click;
         end
-else
+    else
         begin
-                Status_NFCe.Refresh;
-                Application.ProcessMessages;
-                Status_NFCe.Caption := 'Verificando Status do serviço...';
-                Status_NFCe.Refresh;
-                Application.ProcessMessages;
-                ACBrNFCe1.WebServices.StatusServico.Executar;
-                Application.ProcessMessages;
-                Status_NFCe.Refresh;
-                Status_NFCe.Caption := ACBrNFCe1.WebServices.StatusServico.xMotivo;
-                Application.ProcessMessages;
-                //atualizando status no painel de status
-                StatusCtee.Refresh;
-                Application.ProcessMessages;
-                StatusNFCee.Caption := 'Verificando Status da NFCe...';
-                StatusNFCee.Refresh;
-                Application.ProcessMessages;
+         if statusnett.Caption = 'Internet: Offline' then
+                      begin
+                        StatusNFCe.Glyph.Assign(nil);
+                        ImageList1.GetBitmap(3, StatusNFCe.Glyph);
+                        StatusNFCee.Font.Color := clBlue ;
+                        StatusNFCee.Caption := 'NFCe: Contigência Ativo';
+                        btnStatusMDFe.Click;
+                      end
+                  else
+                  begin
 
-                if Status_NFCe.Caption = 'Serviço em Operacao' then
-                begin
-                StatusNFCe.Glyph.Assign(nil);
-                ImageList1.GetBitmap(0, StatusNFCe.Glyph);
-                StatusNFCee.Font.Color := clred ;
-                StatusNFCee.Caption := 'NFCe: '+ Status_NFCe.Caption;
+                       if (StrToDate(dataatual_.Caption) > StrToDate(DataCertificado.Caption)) then
+                          begin
+                          StatusNFCe.Glyph.Assign(nil);
+                          ImageList1.GetBitmap(3, StatusNFCe.Glyph);
+                          StatusNFCee.Font.Color := clBlue ;
+                          StatusNFCee.Caption := 'NFCe: Contigência Ativo';
+                          //btnStatusMDFe.Click;
 
+                          end
+                    else
+                        begin
+                                Status_NFCe.Refresh;
+                                Application.ProcessMessages;
+                                Status_NFCe.Caption := 'Verificando Status do serviço...';
+                                Status_NFCe.Refresh;
+                                Application.ProcessMessages;
+                                ACBrNFCe1.WebServices.StatusServico.Executar;
+                                Application.ProcessMessages;
+                                Status_NFCe.Refresh;
+                                Status_NFCe.Caption := ACBrNFCe1.WebServices.StatusServico.xMotivo;
+                                Application.ProcessMessages;
+                                //atualizando status no painel de status
+                                StatusCtee.Refresh;
+                                Application.ProcessMessages;
+                                StatusNFCee.Caption := 'Verificando Status da NFCe...';
+                                StatusNFCee.Refresh;
+                                Application.ProcessMessages;
 
-                end
-                else
-                begin
-                StatusNFCe.Glyph.Assign(nil);
-                ImageList1.GetBitmap(1, StatusNFCe.Glyph);
-                StatusNFCee.Font.Color := clgreen ;
-                StatusNFCee.Caption := 'NFCe: '+Status_NFCe.Caption;
-                end;
-                btnStatusMDFe.Click;
+                                if Status_NFCe.Caption = 'Serviço em Operacao' then
+                                begin
+                                StatusNFCe.Glyph.Assign(nil);
+                                ImageList1.GetBitmap(0, StatusNFCe.Glyph);
+                                StatusNFCee.Font.Color := clred ;
+                                StatusNFCee.Caption := 'NFCe: '+ Status_NFCe.Caption;
+                               // btnStatusMDFe.Click;
+
+                                end
+                                else
+                                begin
+                                StatusNFCe.Glyph.Assign(nil);
+                                ImageList1.GetBitmap(1, StatusNFCe.Glyph);
+                                StatusNFCee.Font.Color := clgreen ;
+                                StatusNFCee.Caption := 'NFCe: '+Status_NFCe.Caption;
+                               //btnStatusMDFe.Click;
+
+                                end;
+                                btnStatusMDFe.Click;
+                        end;
+                  end;
         end;
-  end;
+
+
+
 end;
 
 procedure TForm1.btnStatusNFeClick(Sender: TObject);
@@ -343,6 +400,7 @@ begin
                                             Application.ProcessMessages;
                                             Status_NFe.Refresh;
                                             Status_NFe.Caption := ACBrNFe1.WebServices.StatusServico.xMotivo;
+                                            //btnStatusCTe.Click;
                                             Application.ProcessMessages;
                                             //atualizando status no painel de status
                                             statusnfee.Refresh;
@@ -357,6 +415,9 @@ begin
                                             ImageList1.GetBitmap(0, statusnfe.Glyph);
                                             statusnfee.Font.Color := clred ;
                                             statusnfee.Caption := 'NFe: '+ Status_NFe.Caption;
+                                           // btnStatusCTe.Click;
+
+
                                             end
                                             else
                                             begin
@@ -364,6 +425,8 @@ begin
                                             ImageList1.GetBitmap(1, statusnfe.Glyph);
                                             statusnfee.Font.Color := clgreen ;
                                             statusnfee.Caption := 'NFe: '+Status_NFe.Caption;
+                                          //  btnStatusCTe.Click;
+
                                             end;
                                             btnStatusCTe.Click;
                                     end;
@@ -448,7 +511,77 @@ begin
 
   registro.Free;
   statusIE.Visible := true;
-  statusIE.Caption := 'Config. Certificados IExplorer '+#13#10+'realizado com sucesso.';
+  statusIE.Caption := 'Configurações do Certificado no '+#13#10+'Internet Explorer realizado com sucesso.';
+
+
+  //tabelas de codigos do registro SLL
+
+  {
+0 => Keine sicheren Protokolle verwenden
+
+8 => Nur SSL 2.0 verwenden
+
+32 => Nur SSL 3.0 verwenden
+
+40 => SSL 2.0 und SSL 3.0 verwenden
+
+128 => Nur TLS 1.0 verwenden
+
+136 => SSL 2.0 und TLS 1.0 verwenden
+
+160 => SSL 3.0 und TLS 1.0 verwenden
+
+168 => SSL 2.0, SSL 3.0, und TLS 1.0 verwenden
+
+512 => Nur TLS 1.1 verwenden
+
+520 => SSL 2.0 und TLS 1.1 verwenden
+
+544 => SSL 3.0 und TLS 1.1 verwenden
+
+552 => SSL 2.0, SSL 3.0 und TLS 1.1 verwenden
+
+640 => TLS 1.0 und TLS 1.1 verwenden
+
+648 => SSL 2.0, TLS 1.0 und TLS 1.1 verwenden
+
+672 => SSL 3.0, TLS 1.0 und TLS 1.1 verwenden
+
+680 => SSL 2.0, SSL 3.0, TLS 1.0 und TLS 1.1 verwenden
+
+2048 => Nur TLS 1.2 verwenden
+
+2056 => SSL 2.0 und TLS 1.2 verwenden
+
+2080 => SSL 3.0 und TLS 1.2 verwenden
+
+2088 => SSL 2.0, SSL 3.0 und TLS 1.2 verwenden
+
+2176 => TLS 1.0 und TLS 1.2 verwenden
+
+2184 => SSL 2.0, TLS 1.0 und TLS 1.2 verwenden
+
+2208 => SSL 3.0, TLS 1.0 und TLS 1.2 verwenden
+
+2216 => SSL 2.0, SSL 3.0, TLS 1.0 und TLS 1.2 verwenden
+
+2560 => TLS 1.1 und TLS 1.2 verwenden
+
+2568 => SSL 2.0, TLS 1.1 und TLS 1.2 verwenden
+
+2592 => SSL 3.0, TLS 1.1 und TLS 1.2 verwenden
+
+2600 => SSL 2.0, SSL 3.0, TLS 1.1 und TLS 1.2 verwenden
+
+2688 => TLS 1.0, TLS 1.1 und TLS 1.2 verwenden
+
+2696 => SSL 2.0, TLS 1.0, TLS 1.1 und TLS 1.2 verwenden
+
+2720 => SSL 3.0, TLS 1.0, TLS 1.1 und TLS 1.2 verwenden
+
+2728 => SSL 2.0, SSL 3.0, TLS 1.0, TLS 1.1 und TLS 1.2 verwenden
+}
+
 
 end;
 
@@ -615,7 +748,7 @@ else
                 end;
         end;
   end;
-  showmessage('Verificação dos Webservices Concluído!');
+  showmessage('Processo Realizado. Verifique Resultados Obtidos!');
 end;
 
 procedure TForm1.btnStatusNETClick(Sender: TObject);
@@ -653,7 +786,23 @@ begin
         statusnett.Caption := 'Internet: Offline';
         btnVCerticado.Click;
 end;
-
+               {
+if InternetGetConnectedState(@i,0) then
+        begin
+        statusnet.Glyph.Assign(nil);
+        ImageList1.GetBitmap(1, statusnet.Glyph);
+        statusnett.Font.Color := clGreen ;
+        statusnett.Caption := 'Internet: Online';
+        btnVCerticado.Click;
+        end
+        else
+        begin
+        statusnet.Glyph.Assign(nil);
+        ImageList1.GetBitmap(0, statusnet.Glyph);
+        statusnett.Font.Color := clRed ;
+        statusnett.Caption := 'Internet: Offline';
+        btnVCerticado.Click;
+        end;    }
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
@@ -680,6 +829,9 @@ end;
 procedure TForm1.FormShow(Sender: TObject);
 
 begin
+  Height  := 304;
+  Width   := 653;
+
 SelecionaCertificado.SetFocus;
 //CRIANDO PASTAS PARA RECEBER OS LOGS DAS CONSULTAS.
 //path do ACBRNFe1
