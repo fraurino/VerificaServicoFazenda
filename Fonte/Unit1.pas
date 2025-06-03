@@ -250,9 +250,9 @@ begin
 timer1.Enabled := false;
   MessageDlg('Realize analise dos serviços da fazenda por UF.' + #13#10 + #13#10 +
              #13#10 +
-             'www.inovatechi.com.br' + #13#10 +
-             'contato@inovatechi.com.br' + #13#10 +
-             '© Inovatechi Sistemas 2010 - 2017', mtInformation, [mbok],0);
+             'www.aurino.com.br' + #13#10 +
+             'contato@aurino.com.br' + #13#10 +
+             '© aurino Sistemas 2010 - 2025', mtInformation, [mbok],0);
 
 end;
 
