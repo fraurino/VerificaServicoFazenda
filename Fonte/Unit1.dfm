@@ -124,7 +124,7 @@ object Form1: TForm1
       Height = 16
       Align = alClient
       Alignment = taRightJustify
-      Caption = 'Oferecido por Inovatechi Sistemas '
+      Caption = 'Oferecido por aurino Sistemas '
       Color = clBlue
       Font.Charset = ANSI_CHARSET
       Font.Color = clNavy
